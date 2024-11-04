@@ -165,6 +165,10 @@ console.log(test.has('elephant'));
 console.log(test.has('nico'));
 test.remove('elephant');
 console.log(test.has('elephant'));
+test.set('moon','black');
+
+console.log(test.entries()); 
+
 console.log(test.length());
 console.log(test.keys());
 let k = 0; 
