@@ -23,10 +23,10 @@ export class HashMap{
     let hash = this.hash(key);
     let NodeIndex = hash % this.size;
 
-    /* if (this.map[NodeIndex].head === null) {
+   /*  if (this.map[NodeIndex].head === null) {
       this.map[NodeIndex] = new LinkedList();
-    } */
-
+    } 
+ */
     if(this.totalItems >= this.load){
       let prevSize = this.size;
       this.size = this.size * 2;
@@ -64,8 +64,10 @@ export class HashMap{
 
     for(let i = 0 ; i < this.size ; i++){
       let count = this.map[i].findNodeByKey(hash,key);
-      if(count !== null){
+      if(count !== -1){
         this.map[i].removeAt(count);
+        this.totalItems--;
+        return
       }
     }
   }
@@ -84,9 +86,8 @@ export class HashMap{
 
   keys(){
     let arr = [];
-
     for( let i = 0 ; i < this.size ; i++){
-      arr.concat(this.map[i].keyArray());
+      arr = arr.concat(this.map[i].keyArray());
     }
 
     return arr;
@@ -97,7 +98,7 @@ export class HashMap{
     let arr = [];
 
     for( let i = 0 ; i < this.size ; i++){
-      arr.concat(this.map[i].infoArray());
+      arr = arr.concat(this.map[i].infoArray());
     }
 
     return arr;
@@ -107,7 +108,7 @@ export class HashMap{
     let arr = [];
 
     for(let i = 0 ; i < this.size ; i++){
-      arr.concat(this.map[i].dataArray());
+      arr = arr.concat(this.map[i].dataArray());
     }
 
     return arr;
@@ -117,7 +118,7 @@ export class HashMap{
     let arr = [];
 
     for(let i = 0 ; i < prevSize ; i++){
-      arr.concat(this.map[i].dataArray());
+      arr = arr.concat(this.map[i].dataArray());
     }
 
     return arr;
@@ -127,9 +128,10 @@ export class HashMap{
     let auxArr = this.entriesAux(prevSize);
 
     this.clear();
-
+    this.totalItems = 0;
+    
     auxArr.forEach( (element) =>{
-      this.map.set(element[0],element[1]);
+      this.set(element[0],element[1]);
     });
   }
 
@@ -150,16 +152,19 @@ test.set('hat', 'black');
 test.set('ice cream', 'white');
 test.set('jacket', 'blue');
 test.set('kite', 'pink');
-/* test.set('lion', 'golden');
+test.set('lion', 'golden');
 test.set('moon', 'silver');
- */ 
-//console.log(test.keys());
-//console.log(test.values());
-//console.log(test.length());
+
+console.log(test.keys());
+console.log(test.values());
+console.log(test.length());
 console.log(test.entries()); 
 
 console.log(test.get('apple'));
 console.log(test.has('elephant'));
 console.log(test.has('nico'));
-//test.remove('elephant');
+test.remove('elephant');
 console.log(test.has('elephant'));
+console.log(test.length());
+console.log(test.keys());
+let k = 0; 

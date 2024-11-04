@@ -8,13 +8,13 @@ export class Node{
     set (setNext){
         this.nextNode = setNext
     }
-}
-
+  }
+  
 export class LinkedList{
     constructor(head = null){
         this.head = head;
     }
-
+  
     append(newNode){
         let node = this.head;
         while(node.nextNode != null){
@@ -22,12 +22,12 @@ export class LinkedList{
         }
         node.nextNode = newNode;
     }
-
+  
     prepend(newNode){
         newNode.nextNode = this.head;
         this.head = newNode;
     }
-
+  
     size(){
         let node = this.head;
         let count = 0;
@@ -37,12 +37,12 @@ export class LinkedList{
         }
         return count
     }
-
+  
     head(){
         let node = this.head
         return node;
     }
-
+  
     tail(){
         let node = this.head;
         while(node.nextNode != null){
@@ -50,7 +50,7 @@ export class LinkedList{
         }
         return node
     }
-
+  
     at(index){
         let node = this.head;
         let count = 0;
@@ -65,7 +65,7 @@ export class LinkedList{
         let errorNode = new Node("no existe");
         return  errorNode
     }
-
+  
     pop(){
         let node = this.head;
         let prevNode = null;
@@ -79,7 +79,7 @@ export class LinkedList{
             prevNode.nextNode = null;
         }
     }
-
+  
     contains(hash,key){
         let node = this.head;
         let isFind = false;
@@ -91,7 +91,7 @@ export class LinkedList{
         }
         return isFind;
     }
-
+  
     find(value){
         let node = this.head;
         let isFind = false;
@@ -106,7 +106,7 @@ export class LinkedList{
         if(isFind === true){return this.at(count)}
         else return -1
     }
-
+  
     toString(){
         let arr = [];
         let node = this.head;
@@ -116,7 +116,7 @@ export class LinkedList{
         }
         return `(${arr.join(') -> (')})`
     }
-
+  
     keyArray(){
         let arr = [];
         let node = this.head;
@@ -126,7 +126,7 @@ export class LinkedList{
         }
         return arr;
     }
-
+  
     infoArray(){
         let arr = [];
         let node = this.head;
@@ -136,7 +136,7 @@ export class LinkedList{
         }
         return arr;
     }
-
+  
     dataArray(){
         let arr = [];
         let node = this.head;
@@ -146,8 +146,8 @@ export class LinkedList{
         }
         return arr;
     }
-
-
+  
+  
     /* insertAt(value,info,key, index){
         let node = this.head;
         let prevNode = null;
@@ -169,7 +169,7 @@ export class LinkedList{
             newNode.nextNode = node;
         }
     } */
-
+  
     findNodeByKey(hash, key){
         let value = hash;
         let node = this.head;
@@ -178,14 +178,14 @@ export class LinkedList{
         while(node && isFind === false){
             if(node.value === value && node.key === key){
                 isFind = true;
+                return count;
             }
             node = node.nextNode;
             count++;
         }
-        if(isFind === true){return count}
-        else return -1
+        return -1
     }
-
+  
     returnNodeByKey(hash, key){
         let value = hash;
         let node = this.head;
@@ -201,7 +201,7 @@ export class LinkedList{
         if(isFind === true){return node.info}
         else return null
     }
-
+  
     insertAt(value, index){
         let node = this.head;
         let prevNode = null;
@@ -223,7 +223,7 @@ export class LinkedList{
             newNode.nextNode = node;
         }
     }
-
+  
     removeAt(index){
         let node = this.head;
         let prevNode = null;
@@ -247,5 +247,5 @@ export class LinkedList{
         prevNode.nextNode = node.nextNode;
         }
     }
-}
-
+  }
+  
