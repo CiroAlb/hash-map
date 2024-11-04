@@ -36,6 +36,7 @@ export class HashMap{
     let existingNodeIndex = this.map[NodeIndex].findNodeByKey(hash,key);
     if (existingNodeIndex !== -1) {
         this.map[NodeIndex].removeAt(existingNodeIndex);
+        this.totalItems--
     }
   
     let node = new Node(hash,value,key);
@@ -164,11 +165,12 @@ console.log(test.get('apple'));
 console.log(test.has('elephant'));
 console.log(test.has('nico'));
 test.remove('elephant');
+test.remove('apple');
 console.log(test.has('elephant'));
 test.set('moon','black');
 
 console.log(test.entries()); 
-
+console.log(`total items : ${test.totalItems}`);
 console.log(test.length());
 console.log(test.keys());
 let k = 0; 
